@@ -1,0 +1,10 @@
+{
+  "fr": {
+    "title": "Confirmer votre identité",
+    "validationCode": "Code de validation",
+    "resend": "Renvoyer",
+    "message": "Nous vous avons envoyé un code de validation par email. Veuillez le saisir ci-dessous.",
+    "messageSuccess": "Vous avez réinitialiser votre mot de passe avec succès. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe."
+  },
+  "en": {}
+}

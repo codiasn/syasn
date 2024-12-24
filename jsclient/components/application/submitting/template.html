@@ -1,0 +1,89 @@
+<div class="c-sya-application-submitting">
+  <div class="c-sya-application-submitting--loader">
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 100 100"
+      enable-background="new 0 0 0 0"
+      xml:space="preserve"
+    >
+      <circle stroke="none" cx="6" cy="50" r="6">
+        <animateTransform
+          attributeName="transform"
+          dur="1s"
+          type="translate"
+          values="0 15 ; 0 -15; 0 15"
+          repeatCount="indefinite"
+          begin="0.1"
+        ></animateTransform>
+      </circle>
+      <circle stroke="none" cx="30" cy="50" r="6">
+        <animateTransform
+          attributeName="transform"
+          dur="1s"
+          type="translate"
+          values="0 10 ; 0 -10; 0 10"
+          repeatCount="indefinite"
+          begin="0.2"
+        ></animateTransform>
+      </circle>
+      <circle stroke="none" cx="54" cy="50" r="6">
+        <animateTransform
+          attributeName="transform"
+          dur="1s"
+          type="translate"
+          values="0 5 ; 0 -5; 0 5"
+          repeatCount="indefinite"
+          begin="0.3"
+        ></animateTransform>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="c-sya-application-submitting--success">
+    <div class="message"></div>
+  </div>
+
+  <div class="c-sya-application-submitting--error">
+    <div class="message"></div>
+
+    <div class="c-sya-btn-grp">
+      <button class="c-sya-btn c-sya-submit-btn restart-btn">restart</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .c-sya-application-submitting .c-sya-application-submitting--loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .c-sya-application-submitting .c-sya-application-submitting--loader svg {
+    width: 50px;
+    fill: currentColor;
+  }
+
+  .c-sya-application-submitting .c-sya-application-submitting--success,
+  .c-sya-application-submitting .c-sya-application-submitting--error {
+    display: none;
+  }
+
+  .c-sya-application-submitting.error .c-sya-application-submitting--success,
+  .c-sya-application-submitting.error .c-sya-application-submitting--loader {
+    display: none;
+  }
+  .c-sya-application-submitting.error .c-sya-application-submitting--error {
+    display: block;
+  }
+
+  .c-sya-application-submitting.success .c-sya-application-submitting--error,
+  .c-sya-application-submitting.success .c-sya-application-submitting--loader {
+    display: none;
+  }
+  .c-sya-application-submitting.success .c-sya-application-submitting--success {
+    display: block;
+  }
+</style>

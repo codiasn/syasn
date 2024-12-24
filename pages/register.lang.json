@@ -1,0 +1,21 @@
+{
+  "fr": {
+    "title": "Bienvenue sur Sya",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "register": "S'inscrire",
+    "alreadyRegistered": "Déjà inscrit ?",
+    "login": "Se connecter",
+    "invalidEmail": "Email invalide",
+    "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+    "emailRequired": "Email requis",
+    "passwordRequired": "Mot de passe requis",
+    "firstNameRequired": "Prénom requis",
+    "lastNameRequired": "Nom requis",
+    "acceptingConfidentialityPolicies": "En vous inscrivant, vous acceptez les <a href='#'>Conditions d'utilisation</a> et la <a href='#'> Politique de confidentialité </a>, notamment l'Utilisation des cookies."
+  },
+  "en": {}
+}

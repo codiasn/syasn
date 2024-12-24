@@ -1,0 +1,30 @@
+:root {
+  --v-sya-dark: 0, 0, 0;
+  --v-sya-light: 255, 255, 255;
+}
+
+.c-sya-btn {
+  border: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 34px;
+  border-radius: 7px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(var(--v-sya-dark));
+  color: rgba(var(--v-sya-light));
+}
+
+.c-sya-btn:not(:disabled) {
+  cursor: pointer;
+}
+
+.c-sya-btn-grp {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

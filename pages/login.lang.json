@@ -1,0 +1,15 @@
+{
+  "fr": {
+    "title": "Connexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "register": "S'inscrire",
+    "notYetRegistred": "Vous n'avez pas de compte ?",
+    "login": "Se connecter",
+    "invalidEmail": "Email invalide",
+    "emailRequired": "Email requis",
+    "passwordRequired": "Mot de passe requis",
+    "forgetPassword": "Mot de passe oublié ?"
+  },
+  "en": {}
+}

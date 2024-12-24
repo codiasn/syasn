@@ -1,0 +1,184 @@
+{
+  "site": {
+    "description": "Connecter entreprises et clients par l'innovation digitale"
+  },
+  "homepage": {
+    "title": "Connecter <br />entreprises et clients <br /> par l'innovation digitale"
+  },
+  "aboutpage": {
+    "header": {
+      "title": "L’ambition de transformer l’Afrique par la digitalisation",
+      "description": "Chez Codia, nous simplifions la gestion des données pour les entreprises, en leur offrant des solutions digitales innovantes qui facilitent l'accès, l'analyse et l'utilisation efficace de leurs informations."
+    },
+    "summary": {
+      "text": "Codia est une entreprise spécialisée dans la création de solutions digitales innovantes visant à connecter les entreprises à leurs clients. En repensant les processus traditionnels, nous développons des outils numériques sur mesure qui facilitent les interactions et renforcent les relations entre les entreprises et leur clientèle.<br /><br />Notre mission est de simplifier et d'optimiser ces connexions grâce à des technologies modernes, tout en garantissant une expérience utilisateur fluide et efficace."
+    }
+  },
+  "careerspage": {
+    "title": "Rejoignez-nous",
+    "header": {
+      "title": "Votre prochain grand changement de carrière",
+      "summary": "Chez Codia, nous ne créons pas, nous innovons. <br/> Nous ne travaillons pas, nous collaborons. <br/> Nous n’avons pas de bureaux, nous avons un terrain de jeu.",
+      "spontaneousApplication": "Candaidature spontanée",
+      "SeeOurOffers": "Voir nos offres"
+    },
+
+    "whyWorkWithUs": {
+      "title": "Beaucoup de raisons d’aimer travailler avec nous",
+      "valuables": [
+        {
+          "icon": "other/030",
+          "title": "Nous sommes optimistes",
+          "text": "Nous croyons que tout est possible et que nous pouvons faire des choses incroyables. Nous croyons que nous avons un avenir passionnant devant nous. Nous apprécions ce voyage que nous faisons ensemble et nous recherchons le plaisir dans ce que nous faisons. Nous assumons toujours de bonnes intentions, et nous apprécions profondément la gentillesse et l’empathie."
+        },
+        {
+          "icon": "other/029",
+          "title": "Nous sommes confiants, mais humbles",
+          "text": "Nous croyons en nous-mêmes et aimons vraiment apprendre en tant qu’individus et en tant qu’équipe. Nous sommes curieux de nature et nous posons beaucoup de questions – nous ne supposons jamais que nous avons toutes les réponses. Nous donnons et recevons des commentaires ouvertement et honnêtement. Nous adoptons un état d’esprit de croissance et nous cherchons constamment des moyens d’être meilleurs."
+        },
+        {
+          "icon": "other/032",
+          "title": "Nous sommes obsédés par le succès de nos clients",
+          "text": "Nous aimons résoudre les problèmes les plus importants, les plus urgents et les plus précieux de nos clients. Nous mesurons et sommes obsédés par l’obtention de résultats significatifs et de valeur pour nos clients et par l’amélioration continue de nos capacités pour le faire encore plus à l’avenir."
+        },
+        {
+          "icon": "other/035",
+          "title": "Nous pensons grand et commençons petit",
+          "text": "Nous aimons nous attaquer aux gros problèmes, et nous aimons les décomposer en morceaux solubles. Notre ambition nous pousse à aller au-delà de ce que l’on pense possible. Nous commençons par le problème à résoudre dans tout ce que nous faisons. Nous investissons dans la construction à long terme et nous apprenons en expérimentant à court terme."
+        },
+        {
+          "icon": "other/033",
+          "title": "Nous allons plus loin ensemble",
+          "text": "Nous travaillons comme une seule équipe, nous gagnons comme une seule équipe. Nous avons placé la barre très haut pour nous-mêmes et pour les autres. Nous nous respectons les uns les autres et nous recherchons différents points de vue pour trouver la meilleure voie à suivre. Nous veillons les uns sur les autres, nous nous élevons les uns les autres et nous veillons à ce qu’il y ait des opportunités équitables pour que tous réussissent."
+        },
+
+        {
+          "icon": "other/031",
+          "title": "Pour nous, chaque jour compte",
+          "text": "Nous commençons chaque journée avec un objectif clair, une intention d’avoir un impact. Nous n’attendons pas le bon moment, nous le créons. Nous nous battons pour nous débloquer, nous poussons pour faire des progrès et nous travaillons dur avec un sentiment d’urgence et de concentration."
+        }
+      ]
+    }
+  },
+  "digibankpage": {
+    "header": {
+      "title": "Une nouvelle banque électronique inclusive et accessible.",
+      "summary": "Chez Codia, nous ne créons pas, nous innovons. <br/> Nous ne travaillons pas, nous collaborons. <br/> Nous n’avons pas de bureaux, nous avons un terrain de jeu.",
+      "joinWaitList": "Rejoindre la liste d'attente"
+    },
+
+    "mission": {
+      "text": "L’essentiel des services bancaires dans un Wallet ne suffit plus, les consommateurs demandent davantage d'expériences à vivre et à partager au quotidien. Digital Bank se positionne ainsi à ce niveau de personnalisation pointue des services pour une qualité optimale. La banque vient vers vous avec tous son univers dématérialisé, sa diversité inclusive et ses solutions très accessibles.",
+      "title": "Notre mission",
+      "missions": [
+        {
+          "icon": "bank",
+          "description": "Rapprocher la banque des usagers avec des services 100% digitales accessibles 24h/24 à travers une application mobile légère et intuitive."
+        },
+        {
+          "icon": "lamp",
+          "description": "Permettre à tout le monde de bénéficier pleinement de l’ensemble des services bancaires quelques soient son activité ou ses revenus."
+        }
+      ]
+    },
+
+    "difference": {
+      "title": " Ce qui fait la différence",
+      "items": [
+        "Ouverture de compte bancaire 100% en ligne.",
+        "Automatisation des systèmes de prêt (demande, étude, validation) grâce à un modèle mathématique.",
+        "Tout le service bancaire 100% digitale.",
+        "Le client dispose d’un RIB à l’ouverture de son compte.",
+        "Pas de conditions de ressources ou de revenus."
+      ]
+    },
+    "services": {
+      "title": "Tous les services bancaires depuis votre téléphone.",
+      "items": [
+        { "text": "Ouverture de compte 100% en ligne", "icon": "other/013" },
+        { "text": "Consultation de solde en temps réel", "icon": "other/010" },
+        { "text": "Notifications instantanées", "icon": "other/005" },
+        { "text": "Historique des transactions", "icon": "other/006" },
+        { "text": "Demande et suivi de prêts", "icon": "other/014" },
+        {
+          "text": "Transfert d’argent et virement bancaire",
+          "icon": "other/007"
+        },
+        {
+          "text": "Achat et paiement de biens et services",
+          "icon": "other/008"
+        },
+        { "text": "Carte de débit et prépayé", "icon": "other/009" }
+      ]
+    },
+    "security": {
+      "title": "Garantir une sécurité optimale coté client et coté banque pour anticiper et éviter tout arnaque.",
+      "items": [
+        { "text": "Validation par code OTP", "icon": "other/015" },
+        {
+          "text": "Déverrouillage par empreinte digitale",
+          "icon": "other/016"
+        },
+        { "text": "Cryptage de bout en bout", "icon": "other/017" },
+        { "text": "Code pin", "icon": "other/018" }
+      ]
+    }
+  },
+  "functionalitys": {
+    "title": "Une palette d'offres et de d'outils chez Tarico",
+    "description": "A travers un seul outil qui centralise les process, Tarico vous permet d'acceder à tout ceci:",
+    "items": [
+      {
+        "icon": "fi fi-tr-compliance-document text-h4",
+        "title": "Formulaire personnalisable",
+        "description": "Créez des formulaires sur mesure qui répondent à vos exigences spécifiques, garantissant flexibilité et efficacité dans la gestion de vos projets ou tâches."
+      },
+      {
+        "icon": "fi fi-tr-network-user text-h4",
+        "title": "Accès multi-utilisateurs",
+        "description": "Favorisez la collaboration avec un accès multi-utilisateurs sécurisé, en contrôlant les permissions et droits d'accès de chaque membre de l’équipe."
+      },
+      {
+        "soon": true,
+        "icon": "fi fi-tr-puzzle-piece-integration text-h4",
+        "title": "Intégration des Logiciels Tiers",
+        "description": "Connectez facilement vos outils existants tels que la comptabilité, les ressources humaines ou les CRM, afin de centraliser les flux de travail et les données."
+      },
+      {
+        "icon": "fi fi-tr-dashboard-monitor text-h4",
+        "title": "Tableau de Bord Analytique",
+        "description": "Suivez vos performances en temps réel grâce à des tableaux de bord interactifs, offrant une vue claire pour prendre des décisions basées sur des données fiables."
+      }
+    ]
+  },
+  "sign": {
+    "cannotConnect": "Une erreur est survenue lors de l'idetification. Veuilleuz réésayer.",
+    "incorrectIdentifier": "Les identiants que vous avez saisi sont incorrectes."
+  },
+
+  "solutions": "Solutions",
+  "ourTeams": "Nos équipes",
+  "pricing": "Tarification",
+  "company": "Entreprise",
+  "contactUs": "Nous contacter",
+  "workWithUs": "Carrière",
+  "fomFor": "tarico pour",
+  "by": "par",
+  "month": "mois",
+  "preview": "Prévisualiser",
+  "update": "Modifier",
+  "accessToShop": "Accéder à la boutique",
+  "restoreFromLastVersionSave": "Restaurer à partir de la dernière version enregistrée",
+  "aboutUs": "A propos de nous",
+  "callUs": "Appeler nous",
+  "poweredBy": "Powered by",
+  "welcome": "Bienvenue",
+  "lang": "Langue",
+
+  "theme": {
+    "title": "Thème",
+    "dark": "Sombre",
+    "light": "Claire",
+    "default": "Par défaut"
+  }
+}
