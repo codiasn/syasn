@@ -1,0 +1,7 @@
+{
+  "name": "advensya",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

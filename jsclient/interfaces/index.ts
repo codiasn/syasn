@@ -1,12 +1,71 @@
+export interface SyaApplicationComponentOptions {
+  application: IApplication | string;
+  target: HTMLElement;
+  metadata?: { [key: string]: any };
+  onSend?: (score: IScore) => void;
+}
+
+export interface ISyaLocale {
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | (string | number | boolean | ISyaLocale)[]
+    | ISyaLocale;
+}
+
+export interface SyaConfig {
+  sessionId?: string;
+  jeton?: string;
+  rsa: { public: string; private: string };
+  useclient?: string;
+
+  /** default 5 */
+  lang?: string;
+  locales?: { [x: string]: ISyaLocale };
+
+  onError?: (error: {
+    [key: string]: any;
+    message: { label: string; translate: { [lang: string]: string } };
+  }) => void;
+}
+
 export interface IBase {
   id: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
+const clientAccessKey = [
+  "client.get",
+  "client.update",
+  "client.generateJeton",
+  "client.setAccess",
+
+  "application.create",
+  "application.get",
+  "application.remove",
+  "application.list",
+  "application.stats",
+
+  "score.add",
+  "score.get",
+  "score.remove",
+  "score.list",
+
+  "user.add",
+  "user.list",
+  "user.update",
+] as const;
+
+export type ClientAccessKey = (typeof clientAccessKey)[number];
+
+export type IClientAccess = Record<ClientAccessKey, "public" | string[]>;
+
 export interface IClient extends IBase {
   name: string;
   description?: string;
+  access: IClientAccess;
 }
 
 export interface IProfile extends IBase {
@@ -73,12 +132,19 @@ export interface IApplicationStepComment extends IApplicationStep {
   label: string;
 }
 
+export interface IApplicationStats {
+  total: number;
+  average: number;
+  details: { [score: string]: number };
+}
+
 export interface IFyle {
   name: string;
   type: string;
   size: number;
   /** base64 - **ex.**: "data:image/jpeg;base64,/9j/4AAQSkZJRgA...." */
   content: string;
+  url: string;
 }
 
 export interface IScore extends IBase {

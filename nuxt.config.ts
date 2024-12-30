@@ -1,5 +1,3 @@
-import vitePluginString from "vite-plugin-string";
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
@@ -23,6 +21,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/i18n",
+    // "@nuxtjs/seo",
     "dayjs-nuxt",
     "nuxt-svgo",
   ],
@@ -31,29 +30,14 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: "%s %separator %siteName - %siteDescription",
       templateParams: {
-        siteName: "Codia",
-        siteDescription:
-          "Connecter entreprises et clients par l'innovation digitale",
+        siteName: "Advensya",
+        siteDescription: "Automatiser et simplifier vos formulaires",
         separator: "·",
       },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
       meta: [{ property: "og:image", content: "/images/og-image-2.png" }],
 
-      script: [
-        {
-          async: true,
-          src: "https://www.googletagmanager.com/gtag/js?id=G-L8XNXTPZTH",
-        },
-        {
-          type: "text/javascript",
-          innerHTML: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-L8XNXTPZTH');
-        `,
-        },
-      ],
+      script: [],
     },
   },
 
@@ -70,7 +54,7 @@ export default defineNuxtConfig({
   svgo: { autoImportPath: false, customComponent: "UiSvgo" },
 
   i18n: {
-    strategy: "no_prefix",
+    strategy: "prefix",
     dynamicRouteParams: false,
     compilation: { strictMessage: false },
     vueI18n: "./locale/i18n.config.ts",
@@ -99,12 +83,6 @@ export default defineNuxtConfig({
         },
       },
     },
-
-    plugins: [
-      vitePluginString({
-        include: ["jsclient/**/*.css", "jsclient/**/*.html"],
-      }),
-    ],
   },
 
   compatibilityDate: "2024-11-10",

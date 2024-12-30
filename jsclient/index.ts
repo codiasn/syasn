@@ -1,11 +1,17 @@
 import forge from "node-forge";
 
 import type {
+  ClientAccessKey,
   IApplication,
+  IApplicationStats,
   IClient,
+  IClientAccess,
   IProfile,
   IScore,
+  ISyaLocale,
   IUser,
+  SyaApplicationComponentOptions,
+  SyaConfig,
 } from "./interfaces";
 import cApplicationScore from "./components/application/score";
 import cApplicationStep from "./components/application/steps";
@@ -14,36 +20,6 @@ import cApplicationSubmitting from "./components/application/submitting";
 // @ts-ignore
 import style from "./components/style.css?raw";
 
-export interface SyaConfig {
-  sessionId?: string;
-  accessToken?: string;
-  rsa: { public: string; private: string };
-
-  /** default 5 */
-  lang?: string;
-  locales?: { [x: string]: ISyaLocale };
-
-  onError?: (error: {
-    [key: string]: any;
-    message: { label: string; translate: { [lang: string]: string } };
-  }) => void;
-}
-
-export interface SyaApplicationComponentOptions {
-  id: string;
-  target: HTMLElement;
-  metadata?: { [key: string]: any };
-  onSend?: (score: IScore) => void;
-}
-
-export interface ISyaLocale {
-  [key: string]:
-    | string
-    | number
-    | boolean
-    | (string | number | boolean | ISyaLocale)[]
-    | ISyaLocale;
-}
 export class Sya {
   config: SyaConfig;
   apiPublicKey = "";
@@ -54,12 +30,12 @@ export class Sya {
       next: "Next",
       goback: "Go Back",
       submit: "Submit",
-      restart: "Restart",
+      tryAgain: "Try again",
       application: {
         message: {
-          error: "An error occurred while sending. Please try again!",
+          error: "An error occurred while sending. Please try again.",
           success:
-            "Your feedback has been successfully submitted. Thank you for your input!",
+            "Your feedback has been successfully submitted. Thank you for your input !",
         },
       },
     },
@@ -67,11 +43,11 @@ export class Sya {
       next: "Suivant",
       goback: "Retour",
       submit: "Envoyer",
-      restart: "Recommencer",
+      tryAgain: "Réessayer",
       application: {
         message: {
           error:
-            "Un erreur s'est produit lors de l'envoie. Veuillez recommencer !",
+            "Un erreur s'est produit lors de l'envoie. Veuillez réessayer.",
           success:
             "Votre évaluation a été envoyée avec succès. Merci pour votre retour !",
         },
@@ -81,11 +57,11 @@ export class Sya {
       next: "Siguiente",
       goback: "Volver",
       submit: "Enviar",
-      restart: "Reiniciar",
+      tryAgain: "Inténtalo de nuevo",
       application: {
         message: {
           error:
-            "Se produjo un error durante el envío. ¡Por favor, inténtelo de nuevo!",
+            "Se ha producido un error durante la transmisión. Por favor, inténtelo de nuevo",
           success:
             "¡Su evaluación se ha enviado con éxito! Gracias por sus comentarios.",
         },
@@ -185,7 +161,9 @@ export class Sya {
 
       if (Array.isArray(data)) {
         let datas = "";
-        for (const dt of data) datas += this.rsa.decrypter(dt);
+        for (const dt of data) {
+          datas += this.rsa.decrypter(dt);
+        }
         return datas;
       }
 
@@ -213,13 +191,8 @@ export class Sya {
         method: "POST",
         data: {
           publicKey: this.config.rsa.public,
-          accessToken: this.config.accessToken
-            ? {
-                _RSA_ENCODED_: this.rsa.encrypter(
-                  this.config.accessToken,
-                  "api"
-                ),
-              }
+          jeton: this.config.jeton
+            ? { _RSA_ENCODED_: this.config.jeton }
             : undefined,
         },
       });
@@ -229,9 +202,7 @@ export class Sya {
       this.user.current = data.user;
     },
     login: async (data: { email: string; password: string }) => {
-      data.password = {
-        _RSA_ENCODED_: this.rsa.encrypter(data.password, "api"),
-      } as any;
+      data.password = { _RSA_ENCODED_: data.password } as any;
 
       const response = await this.request<{ user: IUser; client: IClient }>({
         url: "/session/login",
@@ -256,9 +227,7 @@ export class Sya {
       firstName: string;
       lastName: string;
     }) => {
-      data.password = {
-        _RSA_ENCODED_: this.rsa.encrypter(data.password, "api"),
-      } as any;
+      data.password = { _RSA_ENCODED_: data.password } as any;
 
       return await this.request<{}>({
         url: "/session/register",
@@ -270,7 +239,7 @@ export class Sya {
       const data = await this.request<{ user: IUser; client: IClient }>({
         url: `/session/confirm-identity`,
         method: "POST",
-        data: { code: { _RSA_ENCODED_: this.rsa.encrypter(code, "api") } },
+        data: { code: { _RSA_ENCODED_: code } },
       });
 
       this.client.current = data.client;
@@ -284,9 +253,7 @@ export class Sya {
       });
     },
     resetPassword: async (data: { token: string; password: string }) => {
-      data.password = {
-        _RSA_ENCODED_: this.rsa.encrypter(data.password, "api"),
-      } as any;
+      data.password = { _RSA_ENCODED_: data.password } as any;
       return await this.request<{}>({
         url: "/session/reset-password",
         method: "POST",
@@ -332,6 +299,14 @@ export class Sya {
   client = {
     current: undefined as any as IClient,
 
+    geneteJeton: async () => {
+      const data = await this.request<{ jeton: string }>({
+        url: "_/generate-jeton",
+        method: "post",
+      });
+      return data;
+    },
+
     get: async () => {
       const response = await this.request<IClient>({ url: "_/" });
 
@@ -345,6 +320,18 @@ export class Sya {
         url: "_/",
         method: "post",
         data,
+      });
+
+      this.client.current = response;
+
+      return response;
+    },
+
+    setAccess: async (data: Partial<IClientAccess>) => {
+      const response = await this.request<IClient>({
+        url: "_/access",
+        method: "post",
+        data: { access: data },
       });
 
       this.client.current = response;
@@ -373,6 +360,16 @@ export class Sya {
     get: async (id: string) => {
       return await this.request<IApplication>({ url: `_/application/${id}` });
     },
+
+    stats: async (id: string) => {
+      return await this.request<{
+        application: IApplication;
+        stats: IApplicationStats;
+      }>({
+        url: `_/application/stats/${id}`,
+      });
+    },
+
     remove: async (id: string) => {
       return await this.request<IApplication>({
         url: `_/application/${id}`,
@@ -383,7 +380,10 @@ export class Sya {
     components: {
       build: async (options: SyaApplicationComponentOptions) => {
         if (typeof window !== "undefined") {
-          const application = await this.score.getApplication(options.id);
+          const application =
+            typeof options.application === "string"
+              ? await this.score.getApplication(options.application)
+              : options.application;
           if (!application) return;
 
           const score: Partial<IScore> = { metadata: options.metadata };
@@ -485,34 +485,81 @@ export class Sya {
 
   request<T = any>(params: any): Promise<T> {
     return new Promise((resolve, reject) => {
+      const decrypter = (obj?: { [key: string]: any }) => {
+        const _decrypter = (datas: any) => {
+          if (!datas) {
+            // ne rien faire
+          } else if (Array.isArray(datas)) {
+            for (let i = 0; i < datas.length; i++) {
+              datas[i] = _decrypter(datas[i]);
+            }
+          } else if (
+            Object.prototype.toString.call(datas) === "[object Object]"
+          ) {
+            if ("_RSA_ENCODED_" in datas) {
+              datas = this.rsa.decrypter(datas._RSA_ENCODED_);
+            } else {
+              for (const key in datas) {
+                datas[key] = _decrypter(datas[key]);
+              }
+            }
+          }
+
+          return datas;
+        };
+
+        return _decrypter(obj);
+      };
+
+      const encrypter = (obj?: { [key: string]: any }) => {
+        const _encrypter = (datas: any) => {
+          if (!datas) {
+            // ne rien faire
+          } else if (Array.isArray(datas)) {
+            for (let i = 0; i < datas.length; i++) {
+              datas[i] = _encrypter(datas[i]);
+            }
+          } else if (
+            Object.prototype.toString.call(datas) === "[object Object]"
+          ) {
+            if ("_RSA_ENCODED_" in datas) {
+              if (this.apiPublicKey) {
+                datas._RSA_ENCODED_ = this.rsa.encrypter(
+                  datas._RSA_ENCODED_,
+                  "api"
+                );
+              } else {
+                datas = null;
+              }
+            } else {
+              for (const key in datas) {
+                datas[key] = _encrypter(datas[key]);
+              }
+            }
+          }
+
+          return datas;
+        };
+
+        return _encrypter(obj);
+      };
+
       params.method ||= "get";
       params.url ||= "";
       params.url = params.url.replace(/^\//, "");
 
       params.headers ||= {};
-      params.body ||= params.data || {};
+      params.body ||= encrypter(params.data || {});
 
       if (this.sessionId) {
         params.headers.authorization = `Bearer ${this.sessionId}`;
       }
 
-      const onError = (data: { message: string }) => {
-        if (data.message.startsWith("{") && data.message.endsWith("}")) {
-          try {
-            const parsed = JSON.parse(data.message);
-
-            data.message = parsed;
-
-            if (this.config.onError) this.config.onError(data as any);
-
-            return data;
-          } catch (error) {
-            return error;
-          }
-        }
-
+      const onError = (data: any) => {
+        if (this.config.onError) this.config.onError(data as any);
         return data;
       };
+      // 192.168.1.102
       fetch(`${"http://localhost:8870/api"}/${params.url}`, {
         method: params.method,
         headers: {
@@ -528,9 +575,11 @@ export class Sya {
         .then((response) => {
           response
             .json()
-            .then((data) =>
-              response.ok ? resolve(data as T) : reject(onError(data))
-            )
+            .then((data) => {
+              response.ok
+                ? resolve(decrypter(data) as T)
+                : reject(onError(data));
+            })
             .catch((error) => reject(error));
         })
         .catch((error) => {

@@ -1,46 +1,43 @@
 <script lang="ts" setup>
-import type { IApplication } from "~/jsclient/interfaces";
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import type { IApplication, IScore } from "~/jsclient/interfaces";
+
 const sya = useSya();
 const applications = ref<IApplication[]>([]);
 const container = ref<HTMLDialogElement>();
 const appColor = ref({ color: "", darker: "" });
 
+const score = ref<Partial<IScore>>({});
+
 onMounted(async () => {
   applications.value = await sya.application.list();
-
-  if (container.value) {
-    sya.application.components.build({
-      target: container.value,
-      id: applications.value[0].id,
-      onSend(score) {
-        console.log(score);
-      },
-    });
-  }
 });
 
 const colors = [
   "#00FF00",
-  "#FFFF00",
   "#FF00FF",
   "#00FFFF",
-  "#FFA500",
   "#008080",
   "#5CB338",
   "#DA498D",
   "#7E5CAD",
   "#118B50",
   "#F72C5B",
-  "#F7C331",
   "#8B5DFF",
   "#B03052",
   "#608BC1",
   "#88C273",
   "#F95454",
-  "#FFF100",
   "#006BFF",
   "#72BF78",
 ];
+
+const _colors = ref(colors);
 
 const getRandomColors = () => {
   const color = colors[Math.floor(Math.random() * colors.length)];
@@ -56,7 +53,7 @@ const getRandomColors = () => {
       : { r: 247, g: 44, b: 91 };
   }
 
-  function darkenColor(col: { r: number; g: number; b: number }, factor = 0.8) {
+  function darkenColor(col: { r: number; g: number; b: number }, factor = 0.5) {
     return {
       r: Math.max(0, Math.floor(col.r * factor)),
       g: Math.max(0, Math.floor(col.g * factor)),
@@ -139,72 +136,37 @@ function getRandomColorWithContrast(): string {
 </script>
 
 <template>
-  <div
-    ref="container"
-    class="ui-sya-container h-screen"
-    :style="getRandomColors()"
-  ></div>
+  <v-app>
+    <!-- style="background: #e3ffe7" -->
+    <v-container>
+      <v-row v-if="applications.length">
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="application in applications"
+          :key="application.id"
+        >
+          <ui-sya-application-card :application="application" />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <!-- <swiper
+      v-if="applications.length"
+      :direction="'vertical'"
+      style="height: 100lvh; width: 100lvw"
+    >
+      <swiper-slide
+        v-for="application in applications"
+        :key="application.id"
+        style="
+          height: 100lvh;
+          /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+        "
+      >
+        <ui-sya-application :application="application" />
+      </swiper-slide>
+    </swiper> -->
+  </v-app>
 </template>
-
-<style lang="scss">
-.ui-sya-container {
-  background-color: rgba(var(--bg-color));
-  position: relative;
-
-  .c-sya {
-    height: 100%;
-    padding: 20px;
-    background-color: inherit;
-
-    .c-cya-application-title {
-      font-size: 36px !important;
-      line-height: 1.1 !important;
-      font-weight: bold !important;
-      font-family: mackinac;
-    }
-
-    .c-sya-application-description {
-      line-height: 1.4;
-      font-family: mackinac;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 22px;
-    }
-
-    .c-sya-application-star {
-      margin: auto;
-      margin-top: 20px;
-
-      .rating__icon {
-        width: 39px;
-        height: 39px;
-      }
-    }
-
-    .c-sya-main {
-      background-color: inherit;
-    }
-
-    .c-sya-btn-grp {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      justify-content: center;
-      width: 100%;
-      min-height: 150px;
-      background-color: rgba(var(--bg-color-darker));
-      background: linear-gradient(
-        180deg,
-        rgba(var(--bg-color-darker), 0) 0%,
-        rgba(var(--bg-color-darker), 1) 100%
-      );
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-  }
-}
-</style>

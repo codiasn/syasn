@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">advensya</string>
+    <string name="title_activity_main">advensya</string>
+    <string name="package_name">codia.advensya</string>
+    <string name="custom_url_scheme">codia.advensya</string>
+</resources>
