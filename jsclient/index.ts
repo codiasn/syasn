@@ -72,6 +72,8 @@ export class Sya {
 
   private _sessionId: string | undefined;
 
+  syaDoesntReply = false;
+
   set sessionId(id: string | undefined) {
     this._sessionId = id;
     this.config.sessionId = id;
@@ -483,6 +485,12 @@ export class Sya {
     },
   };
 
+  private async reconnect() {
+    setTimeout(async () => {
+      await this.request<IScore>({ url: "ping" });
+    }, 5000);
+  }
+
   request<T = any>(params: any): Promise<T> {
     return new Promise((resolve, reject) => {
       const decrypter = (obj?: { [key: string]: any }) => {
@@ -576,13 +584,16 @@ export class Sya {
           response
             .json()
             .then((data) => {
+              this.syaDoesntReply = false;
               response.ok
                 ? resolve(decrypter(data) as T)
                 : reject(onError(data));
             })
             .catch((error) => reject(error));
         })
-        .catch((error) => {
+        .catch((error: TypeError) => {
+          this.syaDoesntReply = true;
+          this.reconnect();
           reject(error);
         });
 

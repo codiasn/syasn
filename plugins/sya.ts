@@ -5,9 +5,10 @@ export default defineNuxtPlugin(async () => {
 
   const sya = new Sya(Store.sya.config!);
 
-  await sya.session.init();
-
-  Store.sya.setSessionId(sya.sessionId);
+  try {
+    await sya.session.init();
+    Store.sya.setSessionId(sya.sessionId);
+  } catch (error) {}
 
   return { provide: { sya } };
 });

@@ -60,7 +60,7 @@ const clientAccessKey = [
 
 export type ClientAccessKey = (typeof clientAccessKey)[number];
 
-export type IClientAccess = Record<ClientAccessKey, "public" | string[]>;
+export type IClientAccess = Record<ClientAccessKey, "public" | null | string[]>;
 
 export interface IClient extends IBase {
   name: string;
