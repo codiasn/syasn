@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  ssr: false,
+  ssr: true,
 
   runtimeConfig: {
     public: {
@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     // "@nuxtjs/seo",
     "dayjs-nuxt",
     "nuxt-svgo",
+    "nuxt-schema-org",
   ],
 
   app: {
@@ -55,7 +56,7 @@ export default defineNuxtConfig({
 
   i18n: {
     strategy: "prefix",
-    dynamicRouteParams: false,
+    dynamicRouteParams: true,
     compilation: { strictMessage: false },
     vueI18n: "./locale/i18n.config.ts",
     defaultLocale: "fr",

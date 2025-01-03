@@ -2,6 +2,7 @@
 import type { IApplicationStats, IApplication } from "~/jsclient/interfaces";
 import syaApplicationScoreRate from "~/jsclient/components/application/score/rate/index.vue";
 
+const localePath = useLocalePath();
 const props = defineProps({
   application: { type: Object as PropType<IApplication>, required: true },
 });
@@ -23,10 +24,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div
+  <nuxt-link
     class="ui-sya-application-card"
     itemscope
     itemtype="https://schema.org/Product"
+    :to="localePath({ name: 'slug', params: { slug: application.slug } })"
   >
     <div
       style="
@@ -80,7 +82,6 @@ onMounted(async () => {
           <h3 class="text-h6" style="line-height: 1.1" itemprop="name">
             {{ application.name }}
           </h3>
-
           <p
             v-if="application.description"
             itemprop="description"
@@ -179,7 +180,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <style lang="scss">
@@ -190,6 +191,8 @@ onMounted(async () => {
   height: calc(100% - 0px);
   width: 100%;
   cursor: pointer;
+  display: block;
+  color: rgba(var(--v-theme-on-background));
 
   &:hover {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

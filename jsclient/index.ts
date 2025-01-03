@@ -568,7 +568,7 @@ export class Sya {
         return data;
       };
       // 192.168.1.102
-      fetch(`${"http://localhost:8870/api"}/${params.url}`, {
+      fetch(`${"http://192.168.1.102:8830/dev/api"}/${params.url}`, {
         method: params.method,
         headers: {
           "Content-Type": "application/json",

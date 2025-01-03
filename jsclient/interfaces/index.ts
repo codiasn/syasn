@@ -90,6 +90,7 @@ export interface IUser extends IBase {
 export interface IApplication extends IBase {
   logo?: IFyle | null;
   name: string;
+  slug: string;
   description?: string;
   component?: string;
   once?: boolean;
