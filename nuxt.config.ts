@@ -57,6 +57,7 @@ export default defineNuxtConfig({
   i18n: {
     strategy: "prefix",
     dynamicRouteParams: true,
+    // useSetI18nParams: true,
     compilation: { strictMessage: false },
     vueI18n: "./locale/i18n.config.ts",
     defaultLocale: "fr",
@@ -66,11 +67,11 @@ export default defineNuxtConfig({
         name: "Français",
         files: ["./locale/fr.lang.json"],
       },
-      // {
-      //   code: "en",
-      //   name: "English",
-      //   files: ["./locale/en.lang.json", "./locale/en.models.json"],
-      // },
+      {
+        code: "en",
+        name: "English",
+        files: ["./locale/en.lang.json"],
+      },
     ],
   },
 

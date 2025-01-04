@@ -568,7 +568,7 @@ export class Sya {
         return data;
       };
       // 192.168.1.102
-      fetch(`${"http://192.168.1.102:8830/dev/api"}/${params.url}`, {
+      fetch(`${"http://192.168.1.102:10500"}/${params.url}`, {
         method: params.method,
         headers: {
           "Content-Type": "application/json",
