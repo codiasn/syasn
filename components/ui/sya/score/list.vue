@@ -22,42 +22,11 @@ const {
 
 <template>
   <template v-if="scores">
-    <div v-for="score in scores" :key="score.id">
-      <div class="pa-5 border rounded-lg mb-3">
-        <div class="d-flex align-center">
-          <img
-            src="https://i.pinimg.com/736x/19/bc/eb/19bceb7744f58732fdc9c8b784ea14bf.jpg"
-            width="42"
-            height="42"
-            style="border-radius: 100%"
-          />
-
-          <div class="ml-auto" style="font-size: 12px">
-            {{ $dayjs(score.createdAt).format("DD MMM YYYY HH:mm") }}
-          </div>
-        </div>
-
-        <div class="d-flex align-star ga-2 mt-3">
-          <sya-application-score-rate
-            :application="score.application"
-            :score="score"
-            size="24px"
-          />
-          <div class="d-flex align-center">
-            {{ score.score }}
-          </div>
-        </div>
-
-        <div class="mt-3">
-          <template v-for="response in score.responses">
-            <syaApplicationStepsDisplay
-              :score="score"
-              :sya="sya"
-              :response="response"
-            />
-          </template>
-        </div>
-      </div>
-    </div>
+    <ui-sya-score-display
+      :score="score"
+      class="mb-3"
+      v-for="score in scores"
+      :key="score.id"
+    />
   </template>
 </template>
