@@ -36,7 +36,7 @@ async function mounted() {
 <template>
   <NuxtLayout>
     <ui-loading-page v-if="initing" />
-    <nuxt-page v-else />
+    <NuxtPage v-else />
 
     <template v-if="sya.syaDoesntReply">
       <v-alert

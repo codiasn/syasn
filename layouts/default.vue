@@ -2,11 +2,11 @@
 const route = useRoute();
 const { t } = useI18n();
 
-useHead({
-  templateParams: {
-    siteDescription: t("site.description"),
-  },
-});
+// useHead({
+//   templateParams: {
+//     siteDescription: t("site.description"),
+//   },
+// });
 
 const head = useLocaleHead({
   addDirAttribute: true,

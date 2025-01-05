@@ -29,14 +29,14 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      titleTemplate: "%s %separator %siteName - %siteDescription",
+      titleTemplate: "%s %separator %siteName %separator %siteDescription",
       templateParams: {
         siteName: "Advensya",
-        siteDescription: "Automatiser et simplifier vos formulaires",
+        siteDescription: "",
         separator: "·",
       },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-      meta: [{ property: "og:image", content: "/images/og-image-2.png" }],
+      meta: [{ property: "og:image", content: "/og-image.png" }],
 
       script: [],
     },

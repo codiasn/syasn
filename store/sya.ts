@@ -15,6 +15,7 @@ const store = defineStore(
         rsa: keys.value,
         sessionId: sessionId.value,
         clientId: import.meta.env.VITE_SYA_CLIENT_ID,
+        url: import.meta.env.VITE_SYA_URL,
       };
     }
 

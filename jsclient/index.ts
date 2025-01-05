@@ -1,12 +1,11 @@
 import forge from "node-forge";
 
 import type {
-  ClientAccessKey,
   IApplication,
   IApplicationStats,
+  IApplicationStatsObject,
   IClient,
   IClientAccess,
-  IProfile,
   IScore,
   ISyaLocale,
   IUser,
@@ -365,11 +364,16 @@ export class Sya {
     },
 
     stats: async (id: string) => {
-      return await this.request<{
-        application: IApplication;
-        stats: IApplicationStats;
-      }>({
+      return await this.request<IApplicationStatsObject>({
         url: `_/application/stats/${id}`,
+      });
+    },
+
+    statsList: async (params: { [key: string]: any } = {}) => {
+      return await this.request<IApplicationStatsObject[]>({
+        url: `_/application/stats/`,
+        method: "POST",
+        data: params,
       });
     },
 
@@ -484,6 +488,9 @@ export class Sya {
         data,
       });
     },
+    get: async (id: string) => {
+      return await this.request<IScore>({ url: `_/score/${id}` });
+    },
   };
 
   private async reconnect() {
@@ -569,7 +576,7 @@ export class Sya {
         return data;
       };
       // 192.168.1.102
-      fetch(`${"http://192.168.1.102:10500"}/${params.url}`, {
+      fetch(`${this.config.url}/${params.url}`, {
         method: params.method,
         headers: {
           "Content-Type": "application/json",

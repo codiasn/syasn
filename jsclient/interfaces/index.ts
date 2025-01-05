@@ -15,6 +15,7 @@ export interface ISyaLocale {
 }
 
 export interface SyaConfig {
+  url: string;
   sessionId?: string;
   jeton?: string;
   rsa: { public: string; private: string };
@@ -74,6 +75,7 @@ export interface IProfile extends IBase {
 }
 
 export interface IUser extends IBase {
+  photo?: IFyle;
   email: string;
   firstName: string;
   lastName: string;
@@ -100,7 +102,7 @@ export interface IApplication extends IBase {
    * Custom metadata that can hold additional information
    * as key-value pairs.
    */
-  metadata?: { [key: string]: any };
+  metadata?: { [key: string]: any; type?: string };
 
   /**
    * @default 5
@@ -113,6 +115,12 @@ export interface IApplication extends IBase {
 
   steps?: (IApplicationStepChoice | IApplicationStepComment)[];
 }
+
+export interface IApplicationStatsObject {
+  application: IApplication;
+  stats: IApplicationStats;
+}
+
 export interface IApplicationStep {
   /**
    * Condition for displaying the step or not.
@@ -136,6 +144,8 @@ export interface IApplicationStepComment extends IApplicationStep {
 export interface IApplicationStats {
   total: number;
   average: number;
+  best: number;
+  worst: number;
   details: { [score: string]: number };
 }
 
@@ -154,4 +164,5 @@ export interface IScore extends IBase {
   application: IApplication;
   metadata: { [key: string]: any };
   responses: { [index: string]: { type: string; value: any } };
+  user?: IUser;
 }

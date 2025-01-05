@@ -1,35 +1,34 @@
 <script lang="ts" setup>
-import type { IApplicationStats, IApplication } from "~/jsclient/interfaces";
+import type { IApplicationStatsObject } from "~/jsclient/interfaces";
 import syaApplicationScoreRate from "~/jsclient/components/application/score/rate/index.vue";
 
-const localePath = useLocalePath();
 const props = defineProps({
-  application: { type: Object as PropType<IApplication>, required: true },
+  stats: { type: Object as PropType<IApplicationStatsObject>, required: true },
 });
 
 const sya = useSya();
-const stats = ref<IApplicationStats>();
-const fetching = ref(true);
-
-onMounted(async () => {
-  try {
-    fetching.value = true;
-
-    const { stats: data } = await sya.application.stats(props.application.id);
-    stats.value = data;
-  } finally {
-    fetching.value = false;
-  }
-});
+const localePath = useLocalePath();
 </script>
 
 <template>
   <nuxt-link
     class="ui-sya-application-card"
     itemscope
-    itemtype="https://schema.org/Product"
-    :to="localePath({ name: 'slug', params: { slug: application.slug } })"
+    :itemtype="`https://schema.org/${
+      stats.application.metadata?.type || 'Product'
+    }`"
+    :to="
+      localePath({
+        name: 'application-slug',
+        params: { slug: stats.application.slug },
+      })
+    "
   >
+    <ui-sya-application-aggregate-rating
+      :id="stats.application.id"
+      :stats="stats"
+    />
+
     <div
       style="
         height: calc(100% - 10px);
@@ -54,38 +53,44 @@ onMounted(async () => {
         "
       >
         <div>
-          <div class="mb-2">
-            <img
-              v-if="application.logo"
-              :src="application.logo.url"
-              :alt="`${application.name} Logo`"
-              aria-label="Product logo"
-              style="height: 64px"
+          <div class="d-flex">
+            <ui-sya-application-logo
+              :application="stats.application"
+              class="mb-2"
             />
-            <div
-              v-else
-              aria-hidden="true"
-              style="
-                width: 64px;
-                height: 64px;
-                background-color: rgba(var(--v-theme-on-background), 0.03);
-                border-radius: 0.3em;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
+
+            <v-badge
+              location="bottom end"
+              class="ui-sya-application-card-user-score ml-auto mt-2"
             >
-              <ui-svg name="company" size="32" class="opacity-30" />
-            </div>
+              <img
+                src="https://i.pinimg.com/originals/86/d6/d1/86d6d11ac34ed85df4af65ecd1463355.jpg"
+                width="32"
+                height="32"
+                style="border-radius: 100%; object-fit: cover"
+              />
+
+              <template #badge>
+                <syaApplicationScoreRate
+                  only-actice-score
+                  size="18px"
+                  :application="stats.application"
+                  :score="{ score: 3 }"
+                />
+              </template>
+            </v-badge>
           </div>
 
           <h3 class="text-h6" style="line-height: 1.1" itemprop="name">
-            {{ application.name }}
+            {{ stats.application.name }}
           </h3>
+
           <p
-            v-if="application.description"
+            v-if="stats.application.description"
             itemprop="description"
-            aria-label="Product description"
+            :aria-label="`${
+              stats.application.metadata?.type || 'Product'
+            } description`"
             class="mt-2"
             style="
               display: -webkit-box;
@@ -98,33 +103,8 @@ onMounted(async () => {
               font-size: 14px;
             "
           >
-            {{ application.description }}
+            {{ stats.application.description }}
           </p>
-        </div>
-
-        <div class="d-flex align-center ga-2">
-          <div class="d-flex align-center">
-            <v-badge
-              location="bottom end"
-              class="ui-sya-application-card-user-score"
-            >
-              <img
-                src="https://i.pinimg.com/736x/19/bc/eb/19bceb7744f58732fdc9c8b784ea14bf.jpg"
-                width="32"
-                height="32"
-                style="border-radius: 100%"
-              />
-
-              <template #badge>
-                <syaApplicationScoreRate
-                  only-actice-score
-                  size="18px"
-                  :application="application"
-                  :score="{ score: 3 }"
-                />
-              </template>
-            </v-badge>
-          </div>
         </div>
       </div>
 
@@ -139,8 +119,8 @@ onMounted(async () => {
           <div style="width: max-content; margin: auto">
             <syaApplicationScoreRate
               v-if="stats"
-              :application="application"
-              :score="{ score: stats?.average }"
+              :application="stats.application"
+              :score="{ score: stats.stats?.average }"
             />
             <div
               style="
@@ -149,29 +129,19 @@ onMounted(async () => {
                 margin-left: 3px;
                 font-size: 12px;
               "
-              itemscope
-              itemprop="aggregateRating"
-              itemtype="https://schema.org/AggregateRating"
             >
-              <meta
-                itemprop="ratingValue"
-                :content="(stats?.average || 0).toFixed(1)"
-              />
-              <meta
-                itemprop="ratingCount"
-                :content="(stats?.average || 0).toFixed(1)"
-              />
-
               <div
                 class="d-flex align-center"
                 style="gap: 2px"
-                v-if="stats?.total"
+                v-if="stats?.stats.total"
               >
                 <span itemprop="ratingCount">
-                  {{ (stats?.average || 0).toFixed(1) }}
+                  {{ (stats?.stats.average || 0).toFixed(1) }}
                 </span>
                 <span>-</span>
-                <span itemprop="ratingValue"> {{ stats?.total || 0 }}</span>
+                <span itemprop="ratingValue">
+                  {{ stats?.stats.total || 0 }}
+                </span>
                 <span>avis</span>
               </div>
               <div v-else>aucun avis</div>
