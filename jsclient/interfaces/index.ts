@@ -18,7 +18,7 @@ export interface SyaConfig {
   sessionId?: string;
   jeton?: string;
   rsa: { public: string; private: string };
-  useclient?: string;
+  clientId?: string;
 
   /** default 5 */
   lang?: string;
@@ -153,4 +153,5 @@ export interface IScore extends IBase {
   steps?: { [x: string]: any };
   application: IApplication;
   metadata: { [key: string]: any };
+  responses: { [index: string]: { type: string; value: any } };
 }

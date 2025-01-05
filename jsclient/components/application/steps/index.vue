@@ -21,7 +21,6 @@ const props = defineProps({
   finish: { type: Function as PropType<() => void>, required: true },
 });
 
-const sya = useSya();
 const index = ref(0);
 const step = ref<IApplicationStepChoice>();
 

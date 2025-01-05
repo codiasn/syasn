@@ -1,22 +1,63 @@
 <script lang="ts" setup>
+import syaApplicationScoreRate from "~/jsclient/components/application/score/rate/index.vue";
+import syaApplicationStepsDisplay from "~/jsclient/components/application/steps/display.vue";
+
 const props = defineProps({
   params: { type: Object as PropType<{ [key: string]: any }>, required: true },
 });
 
-const { data, status, error, refresh, clear } = await useAsyncData(async () => {
-  const slug = useRoute().params.slug as string[];
-  if (!slug?.length) return;
-  return sya.score.list(props.params);
-});
-
 const localePath = useLocalePath();
 const sya = useSya();
+
+const {
+  data: scores,
+  status,
+  error,
+  refresh,
+  clear,
+} = await useAsyncData(async () => {
+  return sya.score.list({ ...props.params, _pagination: { page: 1 } });
+});
 </script>
 
 <template>
-  {{ data }}
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas molestiae
-  itaque quae modi ratione earum, praesentium voluptatibus sit est inventore
-  dignissimos consequatur repellendus quisquam reprehenderit minus iste
-  recusandae dolore assumenda.
+  <template v-if="scores">
+    <div v-for="score in scores" :key="score.id">
+      <div class="pa-5 border rounded-lg mb-3">
+        <div class="d-flex align-center">
+          <img
+            src="https://i.pinimg.com/736x/19/bc/eb/19bceb7744f58732fdc9c8b784ea14bf.jpg"
+            width="42"
+            height="42"
+            style="border-radius: 100%"
+          />
+
+          <div class="ml-auto" style="font-size: 12px">
+            {{ $dayjs(score.createdAt).format("DD MMM YYYY HH:mm") }}
+          </div>
+        </div>
+
+        <div class="d-flex align-star ga-2 mt-3">
+          <sya-application-score-rate
+            :application="score.application"
+            :score="score"
+            size="24px"
+          />
+          <div class="d-flex align-center">
+            {{ score.score }}
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <template v-for="response in score.responses">
+            <syaApplicationStepsDisplay
+              :score="score"
+              :sya="sya"
+              :response="response"
+            />
+          </template>
+        </div>
+      </div>
+    </div>
+  </template>
 </template>

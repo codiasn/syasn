@@ -143,6 +143,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   gap: 2px;
+  width: max-content;
 
   .sya-application-score-star---star {
     width: 100%;

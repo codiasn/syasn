@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import { Sya, type SyaConfig } from "~/jsclient";
+import { Sya } from "~/jsclient";
+import type { SyaConfig } from "~/jsclient/interfaces";
 
 const store = defineStore(
   "sya",
@@ -13,6 +14,7 @@ const store = defineStore(
       config.value = {
         rsa: keys.value,
         sessionId: sessionId.value,
+        clientId: import.meta.env.VITE_SYA_CLIENT_ID,
       };
     }
 

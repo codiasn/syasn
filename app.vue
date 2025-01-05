@@ -19,6 +19,7 @@ dayjs.extend(isoWeek);
 dayjs.extend(isBetween);
 
 const initing = ref(true);
+const sya = useSya();
 
 onMounted(mounted);
 async function mounted() {
@@ -37,7 +38,7 @@ async function mounted() {
     <ui-loading-page v-if="initing" />
     <nuxt-page v-else />
 
-    <template v-if="$sya.syaDoesntReply">
+    <template v-if="sya.syaDoesntReply">
       <v-alert
         variant="text"
         class="sya-doesnt-reply"

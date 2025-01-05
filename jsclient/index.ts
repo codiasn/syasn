@@ -193,6 +193,7 @@ export class Sya {
         method: "POST",
         data: {
           publicKey: this.config.rsa.public,
+          clientId: this.config.clientId,
           jeton: this.config.jeton
             ? { _RSA_ENCODED_: this.config.jeton }
             : undefined,
@@ -462,8 +463,8 @@ export class Sya {
   };
 
   score = {
-    list: async (params?: { application?: string }) => {
-      return await this.request<IScore>({
+    list: async (params?: { application?: string; [key: string]: any }) => {
+      return await this.request<IScore[]>({
         url: "_/score",
         method: "post",
         data: params,
