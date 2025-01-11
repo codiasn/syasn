@@ -1,0 +1,369 @@
+{
+  "words": {
+    "welcome": "bienvenue",
+    "category": "catégorie",
+    "categories": "catégories",
+    "filter": "filtrer",
+    "score": "note",
+    "scores": "notes",
+    "result": "resultat",
+    "results": "resultats"
+  },
+
+  "pages": {
+    "confirm-identity": {
+      "title": "Confirmer votre identité",
+      "validationCode": "Code de validation",
+      "resend": "Renvoyer",
+      "message": "Nous vous avons envoyé un code de validation par email. Veuillez le saisir ci-dessous.",
+      "messageSuccess": "Vous avez réinitialiser votre mot de passe avec succès. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe."
+    },
+
+    "login": {
+      "title": "Connexion",
+      "email": "Email",
+      "password": "Mot de passe",
+      "register": "S'inscrire",
+      "notYetRegistred": "Vous n'avez pas de compte ?",
+      "login": "Se connecter",
+      "invalidEmail": "Email invalide",
+      "emailRequired": "Email requis",
+      "passwordRequired": "Mot de passe requis",
+      "forgetPassword": "Mot de passe oublié ?"
+    },
+
+    "register": {
+      "title": "Bienvenue sur Sya",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "register": "S'inscrire",
+      "alreadyRegistered": "Déjà inscrit ?",
+      "login": "Se connecter",
+      "invalidEmail": "Email invalide",
+      "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+      "emailRequired": "Email requis",
+      "passwordRequired": "Mot de passe requis",
+      "firstNameRequired": "Prénom requis",
+      "lastNameRequired": "Nom requis",
+      "acceptingConfidentialityPolicies": "En vous inscrivant, vous acceptez les <a href='#'>Conditions d'utilisation</a> et la <a href='#'> Politique de confidentialité </a>, notamment l'Utilisation des cookies."
+    },
+
+    "request-reset-password": {
+      "title": "Mot de passe oublié",
+      "email": "Email",
+      "message": "Nous vous avons envoyé un code de validation par email. Veuillez le saisir ci-dessous."
+    },
+
+    "reset-password": {
+      "title": "Réinitialiser mot de passe",
+      "message": "Nous vous avons envoyé un code de validation par email. Veuillez le saisir ci-dessous.",
+      "messageSuccess": "Votre mot de passe est réinitialiser avec succès.",
+      "newPassword": "Nouveau mot de passe",
+      "passwordConfirmation": "Confirmer le mot de passe",
+      "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+      "passwordRequired": "Mot de passe requis",
+      "validationCode": "Code de validation",
+      "validationCodeRequired": "Code de validation requis",
+      "login": "Se connecter"
+    }
+  },
+
+  "components": {
+    "form": {
+      "next": "Suivant",
+      "prev": "retour",
+      "submit": "Envoyer"
+    },
+    "lang": {
+      "switcher": {
+        "title": "Changer de langue"
+      }
+    },
+
+    "pages": {
+      "home": {
+        "title": "Votre guide pour choisir les meilleurs services",
+        "subtitle": "Sya est une plateforme innovante d'évaluation des entreprises et des services qu'elles proposent.",
+        "description": "Sya est une plateforme innovante d'évaluation des entreprises et des services qu'elles proposent. Elle permet aux utilisateurs de donner leur avis et de noter les entreprises, offrant ainsi un retour précieux pour améliorer la qualité des prestations. Sya se positionne comme un outil essentiel pour les consommateurs et les entreprises, en permettant de cultiver une relation de confiance mutuelle tout en mettant en avant l'excellence dans les services et les interactions.",
+        "search": { "placeholder": "Entreprise, service, catégorie" },
+        "forCompany": "Sya pour les entreprises"
+      }
+    },
+
+    "sya": {
+      "product": {
+        "aggregate-rating": {
+          "reviews": "avis",
+          "noReviews": "aucun avis"
+        },
+
+        "page-search": {
+          "resume": {
+            "title": "{from} - {to} sur {total} résultats",
+            "empty": "Aucun résultat"
+          }
+        }
+      },
+
+      "score": {
+        "list": {
+          "resume": {
+            "title": "{from} - {to} sur {total} avis",
+            "empty": "Aucun avis"
+          },
+
+          "sort": {
+            "title": "Trier par",
+            "items": {
+              "created_at": "Le plus récent",
+              "from_score_max": "A partir du plus grand score",
+              "from_score_min": "A partir du plus petit score"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "product": {
+    "sort": {
+      "title": "Trier par",
+      "values": {
+        "best_rated": "Le plus pertinant",
+        "highest_rated": "Le plus d'avis",
+        "latest_review": "Avis le plus récent"
+      }
+    }
+  },
+
+  "shemaOrg": {
+    "agriculture_produce": "Agriculture & production",
+    "beer_wine": "Bière & vin",
+    "beverages_liquor": "Boissons & alcool",
+    "candy_chocolate": "Bonbons & chocolat",
+    "bakery_pastry": "Boulangerie & pâtisserie",
+    "coffee_tea": "Café & thé",
+    "lunch_catering": "Déjeuner & traiteur",
+    "grocery_stores_markets": "Épiceries & marchés",
+    "asian_grocery_stores": "Épiceries asiatiques",
+    "fruits_vegetables": "Fruits & légumes",
+    "food_production": "Production alimentaire",
+    "smoking_tobacco": "Tabac & cigarettes",
+    "meat_seafood_eggs": "Viande:fruits de mer & oeufs",
+    "pet_stores": "Animalerie",
+    "cats_dogs": "Chats & chiens",
+    "horses_riding": "Chevaux & équitation",
+    "animal_parks_zoo": "Parcs animaliers & zoos",
+    "animal_health": "Santé animale",
+    "pet_services": "Services animaliers",
+    "insurance": "Assurance",
+    "banking_money": "Banque & argent",
+    "accounting_tax": "Comptabilité & taxes",
+    "real_estate": "Immobilier",
+    "investments_wealth": "Placements et patrimoine",
+    "credit_debt_services": "Services d'endettement et de crédit",
+    "wellness_spa": "Bien-être & spa",
+    "personal_care": "Hygiène personnelle",
+    "cosmetics_makeup": "Produits de beauté & maquillage",
+    "salons_clinics": "Salons & cliniques esthétiques",
+    "hair_care_styling": "Soins capillaires & coiffure",
+    "tattoos_piercings": "Tatouages & piercings",
+    "yoga_meditation": "Yoga & méditation",
+    "architects_engineers": "Architectes & ingénieurs",
+    "contractors_consultants": "Entrepreneurs & consultants",
+    "factory_equipment": "Équipement d'usine",
+    "manufacturing": "Fabrication industrielle",
+    "industrial_supplies": "Fournitures industrielles",
+    "garden_landscaping": "Jardin & paysagisme",
+    "building_materials": "Matériaux de construction",
+    "tools_equipment": "Outils & équipement",
+    "chemicals_plastic": "Produits chimiques & plastique",
+    "construction_services": "Services de construction",
+    "production_services": "Services de production",
+    "language_learning": "Apprentissage des langues étrangères",
+    "colleges_universities": "Collèges & universités",
+    "music_theater_classes": "Cours de musique et de théâtre",
+    "school_high_school": "École & lycée",
+    "specials_schools": "Établissements spécialisés",
+    "vocational_training": "Formation professionnelle",
+    "courses_classes": "Formations & cours",
+    "education_services": "Services éducatifs",
+    "appliances_electronics": "Appareils électroniques",
+    "audio_visual": "Audiovisuel",
+    "internet_software": "Internet & logiciels",
+    "computers_phones": "Ordinateurs & téléphones",
+    "repair_services": "Services de réparation",
+    "clubbing_nightlife": "Discothèques & vie nocturne",
+    "adult_entertainment": "Divertissement pour adultes",
+    "childrens_entertainment": "Divertissement pour enfants",
+    "gaming": "Jeux",
+    "gambling": "Jeux d'argent",
+    "events_venues": "Lieux d'événements",
+    "wedding_party": "Mariage & fêtes",
+    "museums_exibits": "Musées & expositions",
+    "music_movies": "Musique & films",
+    "theater_opera": "Théâtre & opéra",
+    "outdoor_activities": "Activités extérieures",
+    "art_handicraft": "Art & artisanat",
+    "astrology_numerology": "Astrologie & numérologie",
+    "fishing_hunting": "Chasse & pêche",
+    "needlework_knitting": "Couture & tricot",
+    "hobbies": "Loisirs",
+    "music_instruments": "Musique & instruments",
+    "painting_paper": "Peinture & papier",
+    "metal_stone_glass_work": "Travail du métal:de la pierre & du verre",
+    "home_improvements": "Amélioration de l'habitat",
+    "decoration_interior": "Décoration & design intérieur",
+    "energy_heating": "Énergie & chauffage",
+    "garden_pond": "Jardin & paysagisme",
+    "home_goods_stores": "Magasin d'équipement pour la maison",
+    "furniture_stores": "Magasins de meubles",
+    "cultural_goods": "Produits culturels",
+    "bathroom_kitchen": "Salle de bains & cuisine",
+    "home_garden_services": "Services ménagers & jardinage",
+    "fabric_stationary": "Tissus & papeterie",
+    "books_magazines": "Livres & magazines",
+    "media_information": "Médias & information",
+    "photography": "Photographie",
+    "video_sound": "Vidéo & son",
+    "takeaway": "À emporter",
+    "bars_cafes": "Bars & cafés",
+    "african_pacific_cuisine": "Cuisine africaine & cuisine du Pacifique",
+    "chinese_korean_cuisine": "Cuisine chinoise & coréene",
+    "north_south_american_cuisine": "Cuisine d'Afrique du Nord et du Sud",
+    "southeast_asian_cuisine": "Cuisine d'Asie du Sud-Est",
+    "middle_eastern_cuisine": "Cuisine du Moyen-Orient",
+    "european_cuisine": "Cuisine européenne",
+    "japanese_cuisine": "Cuisine japonaise",
+    "mediterranean_cuisine": "Cuisine méditerranéenne",
+    "general_restaurants": "Restaurants spécialisés",
+    "vegetarian_diet": "Végétarien & régime",
+    "physical_aids": "Aides physiques",
+    "clinics": "Cliniques",
+    "diagnostics_testing": "Diagnostic & tests",
+    "doctors_surgeons": "Docteurs & chirurgiens",
+    "health_equipment": "Équipement médical",
+    "hospital_emergency": "Hôpital & urgences",
+    "pregnancy_children": "Maternité & enfants",
+    "medical_specialists": "Médecins spécialistes",
+    "pharmacy_medicine": "Pharmacie & médicaments",
+    "mental_health": "Santé mentale",
+    "dental_services": "Services dentaires",
+    "therapy_senior_health": "Thérapie & santé pour personnes âgées",
+    "vision_hearing": "Vue & audition",
+    "energy_power": "Énergie & électricité",
+    "oil_fuel": "Pétrole & carburant",
+    "water_utilities": "Traitement des eaux",
+    "craftsman": "Artisan",
+    "moving_storage": "Déménagement & entreposage",
+    "house_sitting_security": "Gardiennage de maison et sécurité",
+    "plumbing_sanitation": "Plomberie & assainissement",
+    "cleaning_service_providers": "Prestataires de service de nettoyage",
+    "repair_service_providers": "Prestataires de services de réparation",
+    "house_services": "Services à domicile",
+    "administration_services": "Administration & services",
+    "associations_centers": "Associations & centres",
+    "wholesale": "Commerce de gros",
+    "import_export": "Import & export",
+    "print_graphic_design": "Impression & design graphique",
+    "research_development": "Impression & design graphique",
+    "it_communication": "Informatique & communication",
+    "office_space_supplies": "Locaux & fournitures de bureau",
+    "hr_recruiting": "Ressources humaines & recrutement",
+    "shipping_logistics": "Transport & logistique",
+    "sales_marketing": "Ventes & marketing",
+    "lawyers_attorneys": "Avocats & juristes",
+    "libraries_archives": "Bibliothèques & archives",
+    "government_department": "Département gouvernemental",
+    "municipal_department": "Département municipal",
+    "customs_toll": "Douane & péage",
+    "law_enforcement": "Maintien de l'ordre public",
+    "legal_service_providers": "Prestataires de services juridiques",
+    "registration_services": "Services d'enregistrement",
+    "employment_career": "Emploi & carrière",
+    "kids_family": "Enfants & famille",
+    "funeral_memorial": "Funérailles & mémorial",
+    "waste_management": "Gestion des déchets",
+    "religious_institutions": "Institutions religieuses",
+    "military_veteran": "Militaire & ancien combattant",
+    "nature_environment": "Nature & environnement",
+    "professional_organizations": "Organisations professionnelles",
+    "shelters_homes": "Refuges & centres d'accueil",
+    "public_services_welfare": "Services publics et bien-être",
+    "housing_associations": "Sociétés de logement",
+    "accessories": "Accessoires",
+    "jewelry_watches": "Bijoux & montres",
+    "malls_marketplaces": "Centres commerciaux & marchés",
+    "costume_wedding": "Costume & mariage",
+    "clothing_rental_repair": "Location & Réparation de vêtements",
+    "clothing_underwear": "Vêtements & sous-vêtements",
+    "martial_arts_wrestling": "Arts martiaux & lutte",
+    "dancing_gymnastics": "Danse & gymnastique",
+    "equipment_associations": "Équipement & associations sportives",
+    "fitness_weight_lifting": "Fitness & haltérophilie",
+    "golf_ultimate": "Golf & utimate",
+    "hockey_ice_skating": "Hockey & patinage sur glace",
+    "ball_games": "Jeux de balle",
+    "bat-and-ball_games": "Jeux de batte & de balle",
+    "bowls_lawn_sports": "Jeux de boules & sur pelouse",
+    "swimming_water_sports": "Natation & sports aquatiques",
+    "shooting_target_sports": "Sports de tir & sports de cible",
+    "outdoor_winter_sports": "Sports en extérieur & sports d'hiver",
+    "extreme_sports": "Sports extrêmes",
+    "tennis_racquet_sports": "Tennis & sports de raquette",
+    "activities_tours": "Activités & excursions",
+    "travel_agencies": "Agences de voyage",
+    "airlines_air_travel": "Compagnies aériennes & aéroports",
+    "accomodations_lodging": "Hébergements & logements de vacances",
+    "hotels": "Hôtels",
+    "airports_parking": "Aéroports & parking",
+    "other_vehicles_trailers": "Autres véhicules & remorques",
+    "vehical_rental": "Location de véhicules",
+    "motorcycle_powersports": "Motos & sports motorisés",
+    "auto_parts_wheels": "Pièces automobiles détachées & roues",
+    "vehicle_repair_fuel": "Réparation de véhicules & carburant",
+    "taxis_public_transport": "Taxis & transports publics",
+    "air_water_transport": "Transport aérien & nautique",
+    "bicycles": "Vélos",
+    "cars_trucks": "Voitures & camions",
+
+    "food_beverages_tobacco": "Aliments, boissons & tabac",
+    "animals_pets": "Animaux",
+    "money_insurance": "Argent & assurance",
+    "beauty_wellbeing": "Beauté & bien-être",
+    "construction_manufactoring": "Construction & fabrication",
+    "education_training": "Éducation & formation",
+    "electronics_technology": "Électronique & technologie",
+    "events_entertainment": "Événements & divertissement",
+    "hobbies_crafts": "Loisirs & artisanat",
+    "home_garden": "Maison & jardin",
+    "media_publishing": "Médias & édition",
+    "restaurants_bars": "Restaurants & bars",
+    "health_medical": "Santé & médecine",
+    "utilities": "Services",
+    "home_services": "Services à domicile",
+    "business_services": "Services aux entreprises",
+    "legal_services_government": "Services juridiques & administration",
+    "public_local_services": "Services publics & locaux",
+    "shopping_fashion": "Shopping & mode",
+    "sports": "Sport",
+    "travel_vacation": "Vacances & voyages",
+    "vehicles_transportation": "Véhicules & transport"
+  },
+
+  "sya": {
+    "next": "Suivant",
+    "goback": "Retour",
+    "submit": "Envoyer",
+    "tryAgain": "Réessayer",
+    "product": {
+      "message": {
+        "error": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
+        "success": "Votre avis a été soumis avec succès. Merci pour votre contribution !"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create destination directory if it doesn't exist
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ vars.ORG_VPS_107139_HOST }}
+          username: root
+          port: 22
+          key: ${{ secrets.ORG_VPS_107139_PRIVATE_KEY }}
+          script: mkdir -p ${{ vars.REP_FOLDER }}/client/${{ github.ref_name }}
+
+      - name: copy files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.ORG_VPS_107139_HOST }}
+          username: root
+          port: 22
+          key: ${{ secrets.ORG_VPS_107139_PRIVATE_KEY }}
+          source: "."
+          target: ${{ vars.REP_FOLDER }}/client/${{ github.ref_name }}
+          rm: true
+          overwrite: true
+
+      - name: Deploying
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ vars.ORG_VPS_107139_HOST }}
+          username: root
+          port: 22
+          key: ${{ secrets.ORG_VPS_107139_PRIVATE_KEY }}
+          script: |
+            cd ${{ vars.ORG_VPS_107139_APPS_FOLDER }}/deploy
+
+            TEMP_ENV_FILE=".env.$(date +%s)"
+            echo "${{ secrets.DOT_ENV }}" > $TEMP_ENV_FILE
+            echo "REF_NAME=${{ github.ref_name  }}" >> $TEMP_ENV_FILE
+            echo "NGINX_FILE_PATH=${{ vars.NGINX_FILE_PATH }}" >> $TEMP_ENV_FILE
+            echo "DIRECTORY=${{ vars.REP_FOLDER }}/client/${{ github.ref_name }}" >> $TEMP_ENV_FILE
+            echo "DOCKER_SUFFIX_KEY=sya_client_" >> $TEMP_ENV_FILE
+
+            sh deploy.sh $TEMP_ENV_FILE

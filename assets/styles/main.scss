@@ -1,0 +1,87 @@
+@use "flaticon";
+@use "v-bottom-sheet";
+@use "font";
+
+html,
+body {
+  overflow: unset !important;
+
+  // ::-webkit-scrollbar {
+  //   width: 0px;
+  //   background: transparent;
+  // }
+  background-color: rgba(var(--v-theme-background));
+}
+
+svg:not(.notfill) {
+  fill: currentColor;
+}
+
+i {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(var(--v-theme-primary));
+}
+
+.font-mackinac {
+  font-family: Mackinac;
+}
+
+.font-berlin {
+  font-family: Berlin;
+}
+
+.skeleton {
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    110deg,
+    rgba(var(--v-theme-surface)) 8%,
+    rgba(var(--v-theme-surface), 0.5) 18%,
+    rgba(var(--v-theme-surface)) 33%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+}
+
+.v-input {
+  position: relative;
+
+  .v-field__clearable i {
+    font-size: 16px;
+  }
+}
+
+// .v-input__details {
+//   /* min-height: 22px; */
+//   min-height: unset;
+//   padding-top: 3px;
+//   margin-bottom: 5px;
+
+//   position: absolute;
+//   bottom: 0px;
+//   right: 0;
+// }
+
+.v-application.no-min-width .v-application__wrap {
+  min-height: unset !important;
+}
+
+.pg-register {
+  .ui-form {
+    .ui-form-container {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+}
