@@ -6,11 +6,11 @@ const accessKey = [
   "client.generateJeton",
   "client.setAccess",
 
-  "application.create",
-  "application.get",
-  "application.remove",
-  "application.list",
-  "application.stats",
+  "product.create",
+  "product.get",
+  "product.remove",
+  "product.list",
+  "product.stats",
 
   "score.add",
   "score.get",
@@ -24,6 +24,6 @@ const accessKey = [
 export type AccessKey = (typeof accessKey)[number];
 export type Access = Record<AccessKey, "public" | null | string[]>;
 
-export interface Authorization extends IBase {
+export interface IPermission extends IBase {
   access: Access;
 }

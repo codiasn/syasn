@@ -5,10 +5,16 @@ const pages: CustomRoutePages = {
     fr: "/produit/[slug]",
     en: "/product/[slug]",
   },
+
   "score/[id]": {
     fr: "/avis/[id]",
-    en: "/reviews/[id]",
+    en: "/review/[id]",
   },
+  "score/add/[product]": {
+    fr: "/avis/new-review[product]",
+    en: "/reviews/new-review[product]",
+  },
+
   "type/[type]": {
     fr: "/categories/[type]",
     en: "/categories/[type]",
