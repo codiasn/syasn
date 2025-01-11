@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: sya_client_server
     ports:
       - "${PORT}:${PORT}"
     env_file:
