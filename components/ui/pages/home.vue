@@ -31,7 +31,7 @@ const _swiper = ref<SwiperClass>();
             codia
           </v-btn> -->
 
-          <v-btn
+          <!-- <v-btn
             color="red"
             variant="flat"
             size="x-large"
@@ -42,7 +42,7 @@ const _swiper = ref<SwiperClass>();
               <i class="fi fi-sr-building" style="font-size: 22px"></i>
             </template>
             {{ i18n.t("components.pages.home.forCompany") }}
-          </v-btn>
+          </v-btn> -->
           <h1
             class="font-weight-bold"
             style="font-size: clamp(2rem, 8.2352941176vw, 5rem); line-height: 1"
@@ -75,6 +75,35 @@ const _swiper = ref<SwiperClass>();
             </template>
           </ui-sya-product-search-modal>
         </v-container>
+      </div>
+      <div style="position: relative; padding-top: 150px">
+        <div
+          style="
+            position: relative;
+            height: 310px;
+            background: linear-gradient(
+              90deg,
+              rgb(255 0 36 / 0%) 0%,
+              rgba(0, 212, 255, 0.26858665829613093) 100%
+            );
+          "
+        >
+          <img
+            src="https://brandmark.io/images/slider/slide3@2x.png"
+            style="
+              height: calc(100% + 150px);
+              position: absolute;
+              bottom: 0;
+              right: 150px;
+              object-fit: contain;
+            "
+          />
+          <v-container class="h-100 d-flex align-center">
+            <div class="text-h4" style="width: 90%; max-width: 442px">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
+            </div>
+          </v-container>
+        </div>
       </div>
 
       <div class="bg-black py-3">
@@ -124,9 +153,9 @@ const _swiper = ref<SwiperClass>();
             color="background"
             style="
               position: absolute;
-              top: 50%;
-              left: -5px;
-              transform: translateY(-50%);
+              top: calc(-100% - 10px);
+              right: 35px;
+              /* transform: translateY(-50%); */
               z-index: 1;
             "
             @click="_swiper?.slidePrev()"
@@ -141,9 +170,8 @@ const _swiper = ref<SwiperClass>();
             color="background"
             style="
               position: absolute;
-              top: 50%;
-              right: -5px;
-              transform: translateY(-50%);
+              top: calc(-100% - 10px);
+              right: 0px;
               z-index: 1;
             "
             @click="_swiper?.slideNext()"
